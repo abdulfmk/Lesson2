@@ -1,0 +1,19 @@
+select<-function(directory,file_num){
+  n<-length(file_num)
+  if(n>0){
+  z<-as.vector(n)
+  dat<-data.frame()
+  setwd(directory)
+  files<-list.files()
+  for(i in 1:n){
+    file<-file_num[i]
+    dat<-read.csv(files[file])
+    dat1<-na.omit(dat)
+    z[i]<-as.vector(cor(dat1$sulfate,dat1$nitrate))
+  }
+  z
+  }
+  else{
+    NULL
+  }
+}
